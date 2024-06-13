@@ -55,15 +55,12 @@ def main(ec_data_file, gt_file, output_file, image_path):
         for line in f:
             ec_data.append(json.loads(line))
 
-    with open(gt_file, 'r') as f:
-        gt = json.load(f)
 
     for data in tqdm(ec_data):
         for img_path, data_input in data.items():
-            if img_path.replace('/home/lyx/datasets/', '') in gt:
-                content = f"You are a good expert of emotion understanding. Look at the image, {data_input}"
-                output = ask_claude(prompt=content, image_path=image_path+img_path, model="claude-3-sonnet-20240229", media_type="image/jpeg" if "jpg" in img_path else "image/png")
-                write_to_json({f"{img_path}": output}, output_file)
+            content = f"You are a good expert of emotion understanding. Look at the image, {data_input}"
+            output = ask_claude(prompt=content, image_path=image_path+img_path, model="claude-3-sonnet-20240229", media_type="image/jpeg" if "jpg" in img_path else "image/png")
+            write_to_json({f"{img_path}": output}, output_file)
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Process Emotional Understanding Records.")
