@@ -4,6 +4,7 @@ import dashscope
 import base64
 import json
 from tqdm import tqdm
+import argparse
 
 def write_to_json(obj_dict, json_file_path):
     with open(json_file_path, 'a') as json_file:
@@ -36,8 +37,13 @@ def get_response(img_path, content):
         return response.output.choices[0].message.content[1]["text"]
 
 if __name__ == '__main__':
+    parser = argparse.ArgumentParser(description="Process Emotional Understanding Records.")
+    parser.add_argument("--gt-file", type=str, help="Path to ground truth data file (JSON).")
+    parser.add_argument("--image-path", type=str, help="Path to dataset.")
+    parser.add_argument("--output-file", type=str, help="Path to output JSONL file.")
+    args = parser.parse_args()
     dashscope.api_key = "YOUR_API_KEY"
-    with open("ec_complex.jsonl") as f:
+    with open(args.gt_file) as f:
         data_json = []
         for line in f:
             data_json.append(json.loads(line))

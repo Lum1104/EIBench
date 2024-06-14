@@ -63,7 +63,7 @@ def ask_chatgpt(prompt, image_path, model="gpt-4o", temperature=0.1, max_tokens=
     return response.json()["choices"][0]["message"]["content"]
 
 
-def main(gt_file, output_file):   
+def main(gt_file, output_file, image_path):   
     with open(gt_file) as f:
         data_json = []
         for line in f:
@@ -73,15 +73,16 @@ def main(gt_file, output_file):
         for img_path, data in datas.items():
             for question, gt in data.items():
                 content = f"You are a good expert of emotion understanding. Look at the image, {question}"
-                output = ask_chatgpt(prompt=content, image_path=img_path, model="gpt-4-vision-preview")
+                output = ask_chatgpt(prompt=content, image_path=image_path+img_path, model="gpt-4-vision-preview")
                 write_to_json({f"{img_path}": output}, output_file)
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Process Emotional Understanding Records.")
-    parser.add_argument("--gt-file", type=str, help="Path to ground truth data file (JSON).", default="/home/lyx/datasets/CoT-emo/dataset/full_data.json")
+    parser.add_argument("--gt-file", type=str, help="Path to ground truth data file (JSON).")
+    parser.add_argument("--image-path", type=str, help="Path to dataset.")
     parser.add_argument("--output-file", type=str, help="Path to output JSONL file.")
     args = parser.parse_args()
 
-    main(args.gt_file, args.output_file)
-# python gpt4-score-complex.py --gt-file ec_complex.jsonl --output-file experiments/gpt4o_user_scores.jsonl
+    main(args.gt_file, args.output_file, args.image-path)
+# python gpt4-score-complex.py --gt-file path/to/ec_complex.jsonl --image-path path/to/dataset/ --output-file gpt4o_complex.jsonl

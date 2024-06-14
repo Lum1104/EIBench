@@ -120,8 +120,9 @@ def parse_args():
              "in xxx=yyy format will be merged into config file (deprecate), "
              "change to --cfg-options instead.",
     )
-    parser.add_argument("--img-path", default='/home/czb/datasets/C2F-SelfAsk.json', required=True)
-    parser.add_argument("--out-json", default='/home/czb/datasets/ablation_minigpt4_C2F.json', required=True)
+    parser.add_argument("--img-path", required=True)
+    parser.add_argument("--dataset-path", required=True)
+    parser.add_argument("--out-json", required=True)
     args = parser.parse_args()
     return args
 
@@ -190,11 +191,11 @@ def main():
         for img_path, prompt in datas.items():
             #prompt = f"You are an expert of emotion understanding. Look at this image, {prompt}"
             prompt = f"You are an expert of emotion understanding. Look at this image, {prompt} Let's think step by step."
-            annotation = Generate4img(chat, img_path, prompt)
+            annotation = Generate4img(chat, args.dataset_path+img_path, prompt)
             write_to_json({img_path: annotation}, args.out_json)
 
 
 if __name__ == "__main__":
     main()
 
-# python ec_ablation.py --cfg-path eval_configs/minigptv2_eval.yaml  --gpu-id 0 --img-path user.jsonl --out-json path/to/save.json
+# python ec_basic_minigpt4v2.py --cfg-path eval_configs/minigptv2_eval.yaml  --gpu-id 0 --img-path path/to/user.jsonl --out-json path/to/minigpt4v2_user.jsonl

@@ -49,7 +49,7 @@ def ask_claude(prompt, image_path, model="claude-3-haiku-20240307", media_type="
             print(e)
             time.sleep(0.1)
 
-def main(ec_data_file, gt_file, output_file, image_path):
+def main(ec_data_file, output_file, image_path):
     with open(ec_data_file, 'r') as f:
         ec_data = []
         for line in f:
@@ -63,11 +63,11 @@ def main(ec_data_file, gt_file, output_file, image_path):
             write_to_json({f"{img_path}": output}, output_file)
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Process Emotional Understanding Records.")
-    parser.add_argument("--ec-data-file", type=str, help="Path to emotional understanding data file (JSONL).")
-    parser.add_argument("--gt-file", type=str, help="Path to ground truth data file (JSON).", default="/home/lyx/datasets/CoT-emo/dataset/full_data.json")
+    parser = argparse.ArgumentParser(description="Process Emotional Comprehension Records.")
+    parser.add_argument("--ec-data-file", type=str, help="Path to emotional comprehension data file (JSONL).")
     parser.add_argument("--output-file", type=str, help="Path to output JSONL file.")
-    parser.add_argument("--image-path", type=str, help="Path to output JSONL file.")
+    parser.add_argument("--image-path", type=str, help="Path to dataset.")
     args = parser.parse_args()
 
-    main(args.ec_data_file, args.gt_file, args.output_file, args.image_path)
+    main(args.ec_data_file, args.output_file, args.image_path)
+# python claude_basic.py --ec-data-file path/to/user.jsonl --image-path path/to/dataset/ --output-file claude_haiku_user.jsonl

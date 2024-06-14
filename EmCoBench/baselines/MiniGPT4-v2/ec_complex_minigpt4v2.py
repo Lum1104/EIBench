@@ -130,8 +130,9 @@ def parse_args():
              "in xxx=yyy format will be merged into config file (deprecate), "
              "change to --cfg-options instead.",
     )
-    parser.add_argument("--img-path", default='/home/czb/datasets/C2F-SelfAsk.json', required=True)
-    parser.add_argument("--out-json", default='/home/czb/datasets/ablation_minigpt4_C2F.json', required=True)
+    parser.add_argument("--img-path", required=True)
+    parser.add_argument("--out-json", required=True)
+    parser.add_argument("--dataset-path", required=True)
     args = parser.parse_args()
     return args
 
@@ -204,7 +205,7 @@ def main():
         for img_path, data in datas.items():
             for question, gt in data.items():
                 prompt = f"You are an expert of emotion understanding. Look at this image, {question}"
-                annotation = Generate4img(chat, "/home/czb/project/MiniGPT-4-captions/data/images/" + img_path, prompt)
+                annotation = Generate4img(chat, args.dataset_path + img_path, prompt)
                 write_to_json({img_path: annotation}, args.out_json)
 
 

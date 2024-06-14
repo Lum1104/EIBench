@@ -71,3 +71,47 @@ pip -m spacy download en_core_web_sm
 cd EmCoBench/EmCo_Basic/
 python long_term_scores.py --file-path path/to/ec_data.jsonl
 ```
+
+## Baselines
+### Close-source Models
+```bash
+# (gpt4o/gpt4v)
+python gpt4-basic.py --ec-data-file path/to/user.jsonl --image-path path/to/dataset/ --output-file gpt4o_user.jsonl
+python gpt4-score-complex.py --gt-file path/to/ec_complex.jsonl --image-path path/to/dataset/ --output-file gpt4o_complex.jsonl
+# (Claude-3-haiku/Claude-3-sonnet)
+python claude_basic.py --ec-data-file path/to/user.jsonl --image-path path/to/dataset/ --output-file claude_haiku_user.jsonl
+python claude_complex.py --gt-file path/to/ec_complex.jsonl --image-path path/to/dataset/ --output-file claude_haiku_complex.jsonl
+# qwen-vl-plus
+python qwen_api_basic.py --ec-data-file path/to/user.jsonl --image-path path/to/datasets/ --output-file qwen_api_user.jsonl
+python qwen_api_complex.py --gt-file path/to/ec_complex.jsonl --image-path path/to/dataset --output-file qwen_qpi_complex.jsonl
+```
+### Open-source Models
+Please follow the enviornment needed by each baseline models:
+#### LLaVA
+```bash
+cd LLaVA
+conda create -n llava python=3.10 -y
+conda activate llava
+pip install --upgrade pip  # enable PEP 660 support
+pip install -e .
+# Input different LLaVA model to get the evaluation results.
+python -m llava.serve.ec_basic_llava --model-path liuhaotian/llava-v1.6-34b --image-file path/to/user.jsonl --out-json llava34b_user.jsonl --image-path path/to/dataset/
+python -m llava.serve.ec_complex_llava --model-path liuhaotian/llava-v1.6-34b --image-file path/to/ec_complex.jsonl --out-json llava34b_complex.jsonl --image-path path/to/dataset/
+```
+#### MiniGPT4-v2
+```bash
+cd MiniGPT4-v2
+conda env create -f environment.yml
+conda activate minigptv
+# Modify MiniGPT4-v2/eval_configs/minigptv2_eval.yaml
+python ec_basic_minigpt4v2.py --cfg-path eval_configs/minigptv2_eval.yaml  --gpu-id 0 --img-path path/to/user.jsonl --out-json minigpt4v2_user.jsonl --dataset-path path/to/dataset/
+python ec_complex_minigpt4v2.py --cfg-path eval_configs/minigptv2_eval.yaml  --gpu-id 0 --img-path path/to/ec_complex.jsonl --out-json minigpt_complex.jsonl --dataset-path path/to/dataset/
+```
+#### Otter
+```bash
+cd Otter
+conda env create -f environment.yml
+conda activate otter
+python ec_basic_otter.py --ec-data-file path/to/user.jsonl --image-path path/to/datasets/ --output-file otter_user.jsonl
+python ec_complex_otter.py --gt-file path/to/ec_complex.jsonl --image-path path/to/dataset/ --output-file otter_complex.jsonl
+```

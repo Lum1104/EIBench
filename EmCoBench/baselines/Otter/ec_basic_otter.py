@@ -11,6 +11,7 @@ from torchvision.transforms import Compose, Resize, ToTensor
 from tqdm import tqdm
 import sys
 import json
+import argparse
 os.environ['CUDA_VISIBLE_DEVICES']='0,1'
 
 from otter_ai.models.otter.modeling_otter import OtterForConditionalGeneration
@@ -117,14 +118,16 @@ def main(ec_data_file, output_file, model, tokenizer, image_processor, image_pat
 # ------------------- Main Function -------------------
 
 if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="Process Emotional Comprehension Records.")
+    parser.add_argument("--ec-data-file", type=str, help="Path to emotional comprehension data file (JSONL).")
+    parser.add_argument("--output-file", type=str, help="Path to output JSONL file.")
+    parser.add_argument("--image-path", type=str, help="Path to dataset.")
+    args = parser.parse_args()
+
     model = OtterForConditionalGeneration.from_pretrained("luodian/OTTER-Image-LLaMA7B-LA-InContext", device_map="auto")
     model.text_tokenizer.padding_side = "left"
     tokenizer = model.text_tokenizer
     image_processor = transformers.CLIPImageProcessor()
     model.eval()
 
-    ec_data_file = "path/to/user.jsonl"
-    output_file = "path/to/save.jsonl"
-    image_path = "path/to/dataset/"
-
-    main(ec_data_file, output_file, model, tokenizer, image_processor, image_path)
+    main(args.ec_data_file, args.output_file, model, tokenizer, image_processor, args.image_path)

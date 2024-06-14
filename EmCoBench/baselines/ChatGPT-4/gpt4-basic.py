@@ -65,7 +65,7 @@ def ask_chatgpt(prompt, image_path, model="gpt-4o", temperature=0.1, max_tokens=
     return response.json()["choices"][0]["message"]["content"]
 
 
-def main(ec_data_file, gt_file, output_file):
+def main(ec_data_file, output_file, image_path):
     with open(ec_data_file, 'r') as f:
         ec_data = []
         for line in f:
@@ -75,21 +75,19 @@ def main(ec_data_file, gt_file, output_file):
         for line in f:
             exist_data += [path for path, value in json.loads(line).items()]
         
-
-
     for data in tqdm(ec_data):
         for img_path, data_input in data.items():
             content = f"You are a good expert of emotion understanding. Look at the image, {data_input}"
-            output = ask_chatgpt(prompt=content, image_path="path/to/dataset/"+img_path, model="gpt-4-vision-preview")
+            output = ask_chatgpt(prompt=content, image_path=image_path+img_path, model="gpt-4-vision-preview")
             write_to_json({f"{img_path}": output}, output_file)
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Process Emotional Understanding Records.")
-    parser.add_argument("--ec-data-file", type=str, help="Path to emotional understanding data file (JSONL).")
-    parser.add_argument("--gt-file", type=str, help="Path to ground truth data file (JSON).", default="/home/lyx/datasets/CoT-emo/dataset/full_data.json")
+    parser = argparse.ArgumentParser(description="Process Emotional Comprehension Records.")
+    parser.add_argument("--ec-data-file", type=str, help="Path to emotional comprehension data file (JSONL).")
     parser.add_argument("--output-file", type=str, help="Path to output JSONL file.")
+    parser.add_argument("--image-path", type=str, help="Path to dataset.")
     args = parser.parse_args()
 
-    main(args.ec_data_file, args.gt_file, args.output_file)
-# python gpt4-score.py --ec-data-file user.jsonl --gt-file full_data.json --output-file /home/lyx/datasets/CoT-emo/evaluation/gpt4o_user_scores.jsonl
+    main(args.ec_data_file, args.output_file, args.image_path)
+# python gpt4-basic.py --ec-data-file path/to/user.jsonl --gt-file path/to/basic_ground_truth.json --image-path path/to/dataset/ --output-file gpt4o_user.jsonl
