@@ -68,6 +68,6 @@ We also provide evaluation code for Long-term Coherence. Please install the requ
 ```bash
 pip install spacy
 pip -m spacy download en_core_web_sm
-cd EmCoBench/EmCo_Basic/long_term_scores.py --file-path path/to/ec_data.jsonl
-python 
+cd EmCoBench/EmCo_Basic/
+python long_term_scores.py --file-path path/to/ec_data.jsonl
 ```
