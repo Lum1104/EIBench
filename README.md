@@ -2,7 +2,7 @@
 
 EmCoBench is a comprehensive benchmark designed for evaluating systems on their ability to understand and identify emotional triggers, rather than just classifying emotions. This is essential for developing more empathetic and human-like AI systems.
 
-***More details about EmCoBench, including a forthcoming paper, will be available soon.***
+***More details about EmCoBench, please refer to this [report](https://lum1104.github.io/resources/emcobench_paper.pdf)***
 
 ## Overview
 
