@@ -4,7 +4,11 @@
 
 EmCoBench is a comprehensive benchmark designed for evaluating systems on their ability to understand and identify emotional triggers, rather than just classifying emotions. This is essential for developing more empathetic and human-like AI systems.
 
-***More details about EmCoBench, please refer to this [report](https://lum1104.github.io/resources/emcobench_paper.pdf)***
+## Authors
+
+[Yuxiang Lin](https://lum1104.github.io)<sup>1</sup>, [Jue Wang](https://a-new-b.github.io/)<sup>1,4</sup>, Haomin Liang<sup>1</sup>, Zebang Cheng<sup>1</sup>, [Jun-Yan He](https://scholar.google.com/citations?hl=en&user=bjNZqGAAAAAJ&view_op=list_works&authuser=1&sortby=pubdate)<sup>2*</sup>, [Zhi-Qi Cheng](https://zhiqic.github.io/homepage/index.html)<sup>3*</sup>, [Xiaojiang Peng](https://pengxj.github.io/)<sup>1*</sup>, Alexander G. Hauptmann<sup>3</sup> [\*Corresponding Authors]
+
+***More details about EmCoBench, please refer to this [report](https://lum1104.github.io/resources/emcobench_paper.pdf). Feel free to email yuxiang.lin@gatech.edu if you have any question.***
 
 ## Overview
 
