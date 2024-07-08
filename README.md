@@ -6,7 +6,9 @@ EmCoBench is a comprehensive benchmark designed for evaluating systems on their 
 
 ## Authors
 
-[Yuxiang Lin](https://lum1104.github.io)<sup>1</sup>, [Jue Wang](https://a-new-b.github.io/)<sup>1,4</sup>, Haomin Liang<sup>1</sup>, Zebang Cheng<sup>1</sup>, [Jun-Yan He](https://scholar.google.com/citations?hl=en&user=bjNZqGAAAAAJ&view_op=list_works&authuser=1&sortby=pubdate)<sup>2*</sup>, [Zhi-Qi Cheng](https://zhiqic.github.io/homepage/index.html)<sup>3*</sup>, [Xiaojiang Peng](https://pengxj.github.io/)<sup>1*</sup>, Alexander G. Hauptmann<sup>3</sup> [\*Corresponding Authors]
+[Yuxiang Lin](https://lum1104.github.io)<sup>1</sup>, [Jue Wang](https://a-new-b.github.io/)<sup>1,4</sup>, Haomin Liang<sup>1</sup>, Zebang Cheng<sup>1</sup>, [Jun-Yan He](https://scholar.google.com/citations?hl=en&user=bjNZqGAAAAAJ&view_op=list_works&authuser=1&sortby=pubdate)<sup>2*</sup>, [Zhi-Qi Cheng](https://zhiqic.github.io/homepage/index.html)<sup>3*</sup>, [Xiaojiang Peng](https://pengxj.github.io/)<sup>1*</sup>, [Alexander G. Hauptmann](https://www.cs.cmu.edu/~./alex/)<sup>3</sup> [\*Corresponding Authors]
+
+<sup>1</sup>[Shenzhen Technology University](https://www.sztu.edu.cn/), <sup>2</sup>Alibaba Group, <sup>3</sup>[Carnegie Mellon University](https://www.cs.cmu.edu/), <sup>4</sup>[Shenzhen Institute of Advanced Technology](https://english.siat.ac.cn/)
 
 ***More details about EmCoBench, please refer to this [report](https://lum1104.github.io/resources/emcobench_paper.pdf). Feel free to email yuxiang.lin@gatech.edu if you have any question.***
 
