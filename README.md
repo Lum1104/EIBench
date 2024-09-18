@@ -11,6 +11,8 @@ EmCoBench is a comprehensive benchmark designed for evaluating systems on their 
 
 ## Benchmark
 
+The data format is (LLaMA-3 Evaluation/ChatGPT Evaluation). More detail will be updated.
+
 ### Basic Emotion Comprehension Performance of Open-Source/Close-Source Language Models
 
 | Models                | Happy       | Angry       | Sadness     | Excitement  | Overall     |
