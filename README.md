@@ -1,17 +1,23 @@
-# EmCoBench: An Extensive Benchmark for General Emotion Comprehension
+# 🌟 EmCoBench: An Extensive Benchmark for General Emotion Comprehension
 
 ![emcobench](https://github.com/Lum1104/EmCoBench/assets/87774050/71870702-477b-49cd-9be1-a8d6a1180e78)
 
 EmCoBench is a comprehensive benchmark designed for evaluating systems on their ability to understand and identify emotional triggers, rather than just classifying emotions. This is essential for developing more empathetic and human-like AI systems.
 
-## Overview
+## 🔍 Key Highlights
 
-- **Emotion Comprehension Task**: Focuses on identifying emotional triggers, providing a deeper understanding of emotions.
-- **EmCoBench Dataset**: Includes 78 fine-grained emotions and 1,655 emotion comprehension samples, with 50 multifaceted complex samples.
+- **Emotion Comprehension Task:** Focuses on identifying the emotional triggers in conversations or media, providing AI with a deeper emotional understanding.
+- **Rich Dataset:** Features 78 fine-grained emotions and 1,655 emotion comprehension samples, with 50 challenging multi-faceted complex samples to test the limits of emotion understanding.
+- **Extensive Evaluation:** Benchmarks both open-source and closed-source language models on a wide array of emotional nuances, ensuring a thorough assessment of their capabilities.
 
-## Benchmark
+## 📊 Benchmark Evaluation Metrics
 
-The data format is (LLaMA-3 Evaluation/ChatGPT Evaluation). More detail will be updated.
+EmCoBench evaluates model performance across different emotional categories like Happiness, Anger, Sadness, and Excitement. Each model is tested based on:
+
+- Basic Emotion Comprehension
+- Multi-Faceted Emotion Comprehension
+
+💡 *Note: The numbers represent performance in different evaluation modes: (LLaMA-3 / ChatGPT).*
 
 ### Basic Emotion Comprehension Performance of Open-Source/Close-Source Language Models
 
@@ -73,15 +79,16 @@ The data format is (LLaMA-3 Evaluation/ChatGPT Evaluation). More detail will be 
 | ChatGPT-4V            | 28.00/30.60      |
 | ChatGPT-4o            | **39.27/39.57**  |
 
-## Prerequisites
+## 📦 Prerequisites
 
-Download the following datasets before using EmCoBench:
+To get started with EmCoBench, you'll need to download and prepare the following datasets:
+
 - [EmoSet-118K](https://vcc.tech/EmoSet)
 - [CAER-S](https://caer-dataset.github.io/)
 
-Unzip and place them in the `dataset` folder.
+After downloading, unzip these datasets and place them in the datasets folder in your project directory.
 
-## Usage
+## 🛠️ Setup & Usage
 
 To use the EmCoBench dataset and benchmark in your project:
 
@@ -179,3 +186,5 @@ conda activate otter
 python ec_basic_otter.py --ec-data-file path/to/user.jsonl --image-path path/to/datasets/ --output-file otter_user.jsonl
 python ec_complex_otter.py --gt-file path/to/ec_complex.jsonl --image-path path/to/dataset/ --output-file otter_complex.jsonl
 ```
+
+Feel free to explore, contribute, and raise issues if you run into any trouble!
