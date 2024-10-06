@@ -8,11 +8,11 @@ def write_to_json(obj_dict, json_file_path):
     with open(json_file_path, 'a') as json_file:
         json_file.write(json.dumps(obj_dict) + '\n')
 
-def main(ec_data_file, gt_file, output_file, model_id):
-    with open(ec_data_file, 'r') as f:
-        ec_data = []
+def main(ei_data_file, gt_file, output_file, model_id):
+    with open(ei_data_file, 'r') as f:
+        ei_data = []
         for line in f:
-            ec_data.append(json.loads(line))
+            ei_data.append(json.loads(line))
 
     with open(gt_file, 'r') as f:
         gt = json.load(f)
@@ -24,7 +24,7 @@ def main(ec_data_file, gt_file, output_file, model_id):
         device_map="auto",
     )
 
-    for data in tqdm(ec_data):
+    for data in tqdm(ei_data):
         for img_path, data_input in data.items():
             if img_path in gt:
                 i = 0
@@ -77,4 +77,4 @@ if __name__ == "__main__":
     parser.add_argument("--model-id", type=str, help="Path to the pretrained model.")
     args = parser.parse_args()
 
-    main(args.ec_data_file, args.gt_file, args.output_file, args.model_id)
+    main(args.ei_data_file, args.gt_file, args.output_file, args.model_id)

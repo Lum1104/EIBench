@@ -10,7 +10,7 @@ else:
 
 data_iter = None
 trig_dict = None
-now_json_file = "EmCoBench/EmCo_Basic/user_sample.jsonl"
+now_json_file = "EIBench/EI_Basic/user_sample.jsonl"
 process_file = f"web_ann_score/score_process_{port}.json"
 save_file = f"web_ann_score/output/score_{port}.jsonl"
 
@@ -81,7 +81,7 @@ def load_initial_data(i, trig_dict):
 
 
 def init():
-    trig = get_ann("EmCoBench/EmCo_Basic/basic_ground_truth.json")
+    trig = get_ann("EIBench/EI_Basic/basic_ground_truth.json")
     global trig_dict
     trig_dict = trig
     process = get_ann(process_file)
@@ -101,7 +101,7 @@ note = """
 
 **Hello Valuable Volunteers,**
 
-We kindly request your assistance in evaluating the annotation quality of our lab's EmCoBench dataset. Please rate the quality on a scale from 0 to 5, focusing primarily on whether the "Question" and "Trigger" can satisfactorily answer the query.
+We kindly request your assistance in evaluating the annotation quality of our lab's EIBench dataset. Please rate the quality on a scale from 0 to 5, focusing primarily on whether the "Question" and "Trigger" can satisfactorily answer the query.
 
 **Dataset Annotation Method:**
 

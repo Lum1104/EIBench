@@ -39,20 +39,20 @@ def calculate_coherence(text):
 
 # Set up argparse to handle the input file path
 parser = argparse.ArgumentParser(description='Calculate coherence scores for text data.')
-parser.add_argument('--file-path', type=str, help='Path to the ec_data.jsonl file')
+parser.add_argument('--file-path', type=str, help='Path to the ei_data.jsonl file')
 args = parser.parse_args()
 
 # Read the input file
 with open(args.file_path, 'r') as f:
-    ec_data_jsons = []
+    ei_data_jsons = []
     for line in f:
-        ec_data_jsons.append(json.loads(line))
+        ei_data_jsons.append(json.loads(line))
 
 # Calculate coherence scores
 coherence_scores = []
 
-for ec_data_json in tqdm(ec_data_jsons):
-    for img_path, data_input in ec_data_json.items():
+for ei_data_json in tqdm(ei_data_jsons):
+    for img_path, data_input in ei_data_json.items():
         coherence_score = calculate_coherence(data_input)
         if coherence_score:
             coherence_scores.append(coherence_score)

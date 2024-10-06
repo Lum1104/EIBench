@@ -1,25 +1,25 @@
-# 🌟 EmCoBench: An Extensive Benchmark for General Emotion Comprehension
+# 🌟 EIBench: Assessing the Emotion Interpretation ability of Vision Large Language Models
 
-![emcobench](https://github.com/Lum1104/EmCoBench/assets/87774050/71870702-477b-49cd-9be1-a8d6a1180e78)
+![eibench](https://github.com/Lum1104/EmCoBench/assets/87774050/71870702-477b-49cd-9be1-a8d6a1180e78)
 
-EmCoBench is a comprehensive benchmark designed for evaluating systems on their ability to understand and identify emotional triggers, rather than just classifying emotions. This is essential for developing more empathetic and human-like AI systems.
+EIBench is a comprehensive benchmark designed for evaluating systems on their ability to understand and identify emotional triggers, rather than just classifying emotions. This is essential for developing more empathetic and human-like AI systems.
 
 ## 🔍 Key Highlights
 
-- **Emotion Comprehension Task:** Focuses on identifying the emotional triggers in conversations or media, providing AI with a deeper emotional understanding.
-- **Rich Dataset:** Features 78 fine-grained emotions and 1,655 emotion comprehension samples, with 50 challenging multi-faceted complex samples to test the limits of emotion understanding.
+- **Emotion Interpretation Task:** Focuses on identifying the emotional triggers in conversations or media, providing AI with a deeper emotional understanding.
+- **Rich Dataset:** Features 78 fine-grained emotions and 1,655 Emotion Interpretation samples, with 50 challenging multi-faceted complex samples to test the limits of emotion understanding.
 - **Extensive Evaluation:** Benchmarks both open-source and closed-source language models on a wide array of emotional nuances, ensuring a thorough assessment of their capabilities.
 
 ## 📊 Benchmark Evaluation Metrics
 
-EmCoBench evaluates model performance across different emotional categories like Happiness, Anger, Sadness, and Excitement. Each model is tested based on:
+EIBench evaluates model performance across different emotional categories like Happiness, Anger, Sadness, and Excitement. Each model is tested based on:
 
-- Basic Emotion Comprehension
-- Multi-Faceted Emotion Comprehension
+- Basic Emotion Interpretation
+- Multi-Faceted Emotion Interpretation
 
 💡 *Note: The numbers represent performance in different evaluation modes: (LLaMA-3 / ChatGPT).*
 
-### Basic Emotion Comprehension Performance of Open-Source/Close-Source Language Models
+### Basic Emotion Interpretation Performance of Open-Source/Close-Source Language Models
 
 | Models                | Happy       | Angry       | Sadness     | Excitement  | Overall     |
 |-----------------------|-------------|-------------|-------------|-------------|-------------|
@@ -59,7 +59,7 @@ EmCoBench evaluates model performance across different emotional categories like
 | Claude-3-haiku        | **59.20/60.28** | **49.87/49.84** | **67.21/63.26** | **67.55/68.10** | **63.24/62.41** |
 | Claude-3-sonnet       | 44.58/44.45 | 38.95/42.86 | 55.98/54.40 | 61.41/62.24 | 54.10/54.89 |
 
-### Multi-faceted Emotion Comprehension Performance of Open-Source/Close-Source Language Models
+### Multi-faceted Emotion Interpretation Performance of Open-Source/Close-Source Language Models
 
 | **Models**            | **Recall**       |
 |-----------------------|------------------|
@@ -81,7 +81,7 @@ EmCoBench evaluates model performance across different emotional categories like
 
 ## 📦 Prerequisites
 
-To get started with EmCoBench, you'll need to download and prepare the following datasets:
+To get started with EIBench, you'll need to download and prepare the following datasets:
 
 - [EmoSet-118K](https://vcc.tech/EmoSet)
 - [CAER-S](https://caer-dataset.github.io/)
@@ -90,57 +90,57 @@ After downloading, unzip these datasets and place them in the datasets folder in
 
 ## 🛠️ Setup & Usage
 
-To use the EmCoBench dataset and benchmark in your project:
+To use the EIBench dataset and benchmark in your project:
 
 1. Clone this repository:
 ```bash
-git clone https://github.com/Lum1104/EmCoBench.git
+git clone https://github.com/Lum1104/EIBench.git
 ```
 
 2. Navigate to the directory:
 ```bash
-cd EmCoBench
+cd EIBench
 ```
 
 3. Run the example baseline code and test your own models.
 
 For each baseline model, please install the required environment as needed:
 ```bash
-# Basic EmCoBench
-python EmCoBench/baselines/qwen/qwen_user.py --model-path Qwen/Qwen-VL-Chat --input-json EmCoBench/EmCo_Basic/user.jsonl --output-json EmCoBench/EmCo_Basic/qwen_basic.jsonl --image-path datasets/
-# Complex EmCoBench
-python EmCoBench/baselines/qwen/qwen_complex.py --model-path Qwen/Qwen-VL-Chat --input-json EmCo_Complex/ec_complex.jsonl --output-json EmCoBench/EmCo_Complex/qwen_complex.jsonl --image-path datasets/
+# Basic EIBench
+python EIBench/baselines/qwen/qwen_user.py --model-path Qwen/Qwen-VL-Chat --input-json EIBench/EI_Basic/user.jsonl --output-json EIBench/EI_Basic/qwen_basic.jsonl --image-path datasets/
+# Complex EIBench
+python EIBench/baselines/qwen/qwen_complex.py --model-path Qwen/Qwen-VL-Chat --input-json EI_Complex/ei_complex.jsonl --output-json EIBench/EI_Complex/qwen_complex.jsonl --image-path datasets/
 ```
 4. Get evaluate results by LLaMA-3/ChatGPT-3.5
 
 Here is the script for LLaMA-3 evaluation.
 ```bash
-# Basic EmCoBench
-cd EmCoBench/EmCo_Basic/
+# Basic EIBench
+cd EIBench/EI_Basic/
 python llama3-eval.py --model-id meta-llama/Meta-Llama-3-8B-Instruct --ec-data-file qwen_basic.jsonl --gt-file basic_ground_truth.json --output-file qwen_basic_scores_llama3.jsonl
 python get_scores.py --file-path qwen_basic_llama3_scores.jsonl
-# Complex EmCoBench
-cd EmCoBench/EmCo_Complex/
-python llama3-eval-complex.py --ec-data-file qwen_complex.jsonl --gt-file ec_complex.jsonl --output-file qwen_complex_llama3_scores.jsonl --model-id meta-llama/Meta-Llama-3-8B-Instruct
+# Complex EIBench
+cd EIBench/EI_Complex/
+python llama3-eval-complex.py --ec-data-file qwen_complex.jsonl --gt-file ei_complex.jsonl --output-file qwen_complex_llama3_scores.jsonl --model-id meta-llama/Meta-Llama-3-8B-Instruct
 ```
 
 Here is the script for ChatGPT-3.5 evaluation. Prepare your api key and write it in the variable `OpenAI(api_key="YOUR_API_KEY")`.
 ```bash
-# Basic EmCoBench
-cd EmCoBench/EmCo_Basic/
+# Basic EIBench
+cd EIBench/EI_Basic/
 python gpt-eval.py --ec-data-file qwen_basic.jsonl --gt-file basic_ground_truth.json --output-file qwen_basic_scores_gpt.jsonl
 python get_scores.py --file-path qwen_basic_gpt_scores.jsonl
-# Complex EmCoBench
-cd EmCoBench/EmCo_Complex/
-python gpt-eval-complex.py --ec-data-file qwen_complex.jsonl --gt-file ec_complex.jsonl --output-file qwen_complex_gpt_scores.jsonl
+# Complex EIBench
+cd EIBench/EI_Complex/
+python gpt-eval-complex.py --ec-data-file qwen_complex.jsonl --gt-file ei_complex.jsonl --output-file qwen_complex_gpt_scores.jsonl
 ```
 
 We also provide evaluation code for Long-term Coherence. Please install the required packages:
 ```bash
 pip install spacy
 pip -m spacy download en_core_web_sm
-cd EmCoBench/EmCo_Basic/
-python long_term_scores.py --file-path path/to/ec_data.jsonl
+cd EIBench/EI_Basic/
+python long_term_scores.py --file-path path/to/ei_data.jsonl
 ```
 
 ## Baselines
@@ -148,13 +148,13 @@ python long_term_scores.py --file-path path/to/ec_data.jsonl
 ```bash
 # (gpt4o/gpt4v)
 python gpt4-basic.py --ec-data-file path/to/user.jsonl --image-path path/to/dataset/ --output-file gpt4o_user.jsonl
-python gpt4-score-complex.py --gt-file path/to/ec_complex.jsonl --image-path path/to/dataset/ --output-file gpt4o_complex.jsonl
+python gpt4-score-complex.py --gt-file path/to/ei_complex.jsonl --image-path path/to/dataset/ --output-file gpt4o_complex.jsonl
 # (Claude-3-haiku/Claude-3-sonnet)
 python claude_basic.py --ec-data-file path/to/user.jsonl --image-path path/to/dataset/ --output-file claude_haiku_user.jsonl
-python claude_complex.py --gt-file path/to/ec_complex.jsonl --image-path path/to/dataset/ --output-file claude_haiku_complex.jsonl
+python claude_complex.py --gt-file path/to/ei_complex.jsonl --image-path path/to/dataset/ --output-file claude_haiku_complex.jsonl
 # qwen-vl-plus
 python qwen_api_basic.py --ec-data-file path/to/user.jsonl --image-path path/to/datasets/ --output-file qwen_api_user.jsonl
-python qwen_api_complex.py --gt-file path/to/ec_complex.jsonl --image-path path/to/dataset --output-file qwen_qpi_complex.jsonl
+python qwen_api_complex.py --gt-file path/to/ei_complex.jsonl --image-path path/to/dataset --output-file qwen_qpi_complex.jsonl
 ```
 ### Open-source Models
 Please follow the enviornment needed by each baseline models:
@@ -166,8 +166,8 @@ conda activate llava
 pip install --upgrade pip  # enable PEP 660 support
 pip install -e .
 # Input different LLaVA model to get the evaluation results.
-python -m llava.serve.ec_basic_llava --model-path liuhaotian/llava-v1.6-34b --image-file path/to/user.jsonl --out-json llava34b_user.jsonl --image-path path/to/dataset/
-python -m llava.serve.ec_complex_llava --model-path liuhaotian/llava-v1.6-34b --image-file path/to/ec_complex.jsonl --out-json llava34b_complex.jsonl --image-path path/to/dataset/
+python -m llava.serve.ei_basic_llava --model-path liuhaotian/llava-v1.6-34b --image-file path/to/user.jsonl --out-json llava34b_user.jsonl --image-path path/to/dataset/
+python -m llava.serve.ei_complex_llava --model-path liuhaotian/llava-v1.6-34b --image-file path/to/ei_complex.jsonl --out-json llava34b_complex.jsonl --image-path path/to/dataset/
 ```
 #### MiniGPT4-v2
 ```bash
@@ -175,16 +175,16 @@ cd MiniGPT4-v2
 conda env create -f environment.yml
 conda activate minigptv
 # Modify MiniGPT4-v2/eval_configs/minigptv2_eval.yaml
-python ec_basic_minigpt4v2.py --cfg-path eval_configs/minigptv2_eval.yaml  --gpu-id 0 --img-path path/to/user.jsonl --out-json minigpt4v2_user.jsonl --dataset-path path/to/dataset/
-python ec_complex_minigpt4v2.py --cfg-path eval_configs/minigptv2_eval.yaml  --gpu-id 0 --img-path path/to/ec_complex.jsonl --out-json minigpt_complex.jsonl --dataset-path path/to/dataset/
+python ei_basic_minigpt4v2.py --cfg-path eval_configs/minigptv2_eval.yaml  --gpu-id 0 --img-path path/to/user.jsonl --out-json minigpt4v2_user.jsonl --dataset-path path/to/dataset/
+python ei_complex_minigpt4v2.py --cfg-path eval_configs/minigptv2_eval.yaml  --gpu-id 0 --img-path path/to/ei_complex.jsonl --out-json minigpt_complex.jsonl --dataset-path path/to/dataset/
 ```
 #### Otter
 ```bash
 cd Otter
 conda env create -f environment.yml
 conda activate otter
-python ec_basic_otter.py --ec-data-file path/to/user.jsonl --image-path path/to/datasets/ --output-file otter_user.jsonl
-python ec_complex_otter.py --gt-file path/to/ec_complex.jsonl --image-path path/to/dataset/ --output-file otter_complex.jsonl
+python ei_basic_otter.py --ec-data-file path/to/user.jsonl --image-path path/to/datasets/ --output-file otter_user.jsonl
+python ei_complex_otter.py --gt-file path/to/ei_complex.jsonl --image-path path/to/dataset/ --output-file otter_complex.jsonl
 ```
 
 Feel free to explore, contribute, and raise issues if you run into any trouble!

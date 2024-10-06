@@ -9,11 +9,11 @@ def write_to_json(obj_dict, json_file_path):
     with open(json_file_path, 'a') as json_file:
         json_file.write(json.dumps(obj_dict) + '\n')
 
-def main(ec_data_file, gt_file, output_file, model_id):
-    with open(ec_data_file, 'r') as f:
-        ec_data = []
+def main(ei_data_file, gt_file, output_file, model_id):
+    with open(ei_data_file, 'r') as f:
+        ei_data = []
         for line in f:
-            ec_data.append(json.loads(line))
+            ei_data.append(json.loads(line))
 
     with open(args.gt_file) as f:
         gt = []
@@ -27,8 +27,8 @@ def main(ec_data_file, gt_file, output_file, model_id):
         device_map="auto",
     )
 
-    for j in tqdm(range(len(ec_data))):
-        for img_path1, data_input in ec_data[j].items():
+    for j in tqdm(range(len(ei_data))):
+        for img_path1, data_input in ei_data[j].items():
             i = 0
             while True:
                 content = "Your task is to assess a record aimed at comprehending an emotion and compare it against the truth label. Determine the number of potential triggers identified correctly versus those missed. Please provide your assessment in the format: {score: correct/total}, e.g. {score: 2/5} for 2 correct and 5 in total. And include an explanation of your assessment."
@@ -81,4 +81,4 @@ if __name__ == "__main__":
     parser.add_argument("--model-id", type=str, help="Path to the pretrained model.")
     args = parser.parse_args()
 
-    main(args.ec_data_file, args.gt_file, args.output_file, args.model_id)
+    main(args.ei_data_file, args.gt_file, args.output_file, args.model_id)
