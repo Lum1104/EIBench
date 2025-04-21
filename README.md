@@ -159,7 +159,7 @@ python qwen_api_basic.py --ec-data-file path/to/user.jsonl --image-path path/to/
 python qwen_api_complex.py --gt-file path/to/ei_complex.jsonl --image-path path/to/dataset --output-file qwen_qpi_complex.jsonl
 ```
 ### Open-source Models
-Please follow the enviornment needed by each baseline models:
+Please follow the environment needed by each baseline models:
 #### LLaVA
 ```bash
 cd LLaVA
