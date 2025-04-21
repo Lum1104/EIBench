@@ -1,14 +1,15 @@
-# 🌟 EIBench: Assessing the Emotion Interpretation ability of Vision Large Language Models
+# 🌟 Why We Feel: Breaking Boundaries in Emotional Reasoning with Multimodal Large Language Models
 
 ![eibench](https://github.com/Lum1104/EmCoBench/assets/87774050/71870702-477b-49cd-9be1-a8d6a1180e78)
 
-EIBench is a comprehensive benchmark designed for evaluating systems on their ability to understand and identify emotional triggers, rather than just classifying emotions. This is essential for developing more empathetic and human-like AI systems.
+This paper introduces EIBench, a benchmark for evaluating the ability of Vision-Language Models (VLLMs) in the task of Emotion Interpretation (EI). Unlike traditional emotion analysis that focuses primarily on recognizing which emotion is present, EI emphasizes understanding the underlying causes of emotions, including both explicit factors (such as visible objects and interpersonal interactions) and implicit factors (such as cultural context and off-screen events).
 
 ## 🔍 Key Highlights
 
-- **Emotion Interpretation Task:** Focuses on identifying the emotional triggers in conversations or media, providing AI with a deeper emotional understanding.
-- **Rich Dataset:** Features 78 fine-grained emotions and 1,655 Emotion Interpretation samples, with 50 challenging multi-faceted complex samples to test the limits of emotion understanding.
-- **Extensive Evaluation:** Benchmarks both open-source and closed-source language models on a wide array of emotional nuances, ensuring a thorough assessment of their capabilities.
+- **Emotion Interpretation Task:** The goal of EI is to explain why an individual experiences a particular emotional response, rather than merely labeling the emotion category. This task requires models to engage in causal reasoning instead of simple emotion classification.
+- **Rich Dataset:** Comprising 1,615 basic EI samples and 50 complex EI samples, EIBench covers four primary emotion categories (anger, sadness, excitement, happiness) and complex scenarios with interwoven emotions. Each sample demands rationale-based explanations from models, rather than straightforward categorization.
+- **Coarse-to-Fine Self-Ask (CFSA) Annotation Method:** By employing iterative question-and-answer rounds, CFSA guides VLLMs to progressively delve into emotional triggers, generating high-quality annotations that capture both explicit and implicit factors.
+- **Comprehensive Model Evaluation:** Under four distinct experimental settings (including using image captions, chain-of-thought prompting, and persona-based variations), both open-source and proprietary large language models were systematically assessed. The results reveal significant performance gaps, especially in complex emotional reasoning scenarios, even for state-of-the-art models like Claude-3 and ChatGPT-4.
 
 ## 📊 Benchmark Evaluation Metrics
 
@@ -16,6 +17,7 @@ EIBench evaluates model performance across different emotional categories like H
 
 - Basic Emotion Interpretation
 - Multi-Faceted Emotion Interpretation
+- Long-Term Coherence
 
 💡 *Note: The numbers represent performance in different evaluation modes: (LLaMA-3 / ChatGPT).*
 
