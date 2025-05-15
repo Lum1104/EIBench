@@ -1,5 +1,11 @@
 # 🌟 Why We Feel: Breaking Boundaries in Emotional Reasoning with Multimodal Large Language Models
 
+<p align="center">
+  <a href="https://arxiv.org/abs/2504.07521">
+    <img src="https://img.shields.io/badge/arXiv-2504.07521-b31b1b.svg?logo=arxiv&logoColor=white" alt="arXiv badge"/>
+  </a>
+</p>
+
 ![eibench](https://github.com/Lum1104/EmCoBench/assets/87774050/71870702-477b-49cd-9be1-a8d6a1180e78)
 
 This paper introduces EIBench, a benchmark for evaluating the ability of Vision-Language Models (VLLMs) in the task of Emotion Interpretation (EI). Unlike traditional emotion analysis that focuses primarily on recognizing which emotion is present, EI emphasizes understanding the underlying causes of emotions, including both explicit factors (such as visible objects and interpersonal interactions) and implicit factors (such as cultural context and off-screen events).
