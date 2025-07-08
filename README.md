@@ -8,6 +8,8 @@
 
 ![eibench](https://github.com/Lum1104/EmCoBench/assets/87774050/71870702-477b-49cd-9be1-a8d6a1180e78)
 
+*Check out our new project [MER-Factory](https://github.com/Lum1104/MER-Factory), an automated factory for building Multimodal Emotion Recognition and Reasoning datasets!*
+
 This paper introduces EIBench, a benchmark for evaluating the ability of Vision-Language Models (VLLMs) in the task of Emotion Interpretation (EI). Unlike traditional emotion analysis that focuses primarily on recognizing which emotion is present, EI emphasizes understanding the underlying causes of emotions, including both explicit factors (such as visible objects and interpersonal interactions) and implicit factors (such as cultural context and off-screen events).
 
 ## 🔍 Key Highlights
