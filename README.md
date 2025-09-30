@@ -8,7 +8,8 @@
 
 ![eibench](https://github.com/Lum1104/EmCoBench/assets/87774050/71870702-477b-49cd-9be1-a8d6a1180e78)
 
-***Check out our new project [MER-Factory](https://github.com/Lum1104/MER-Factory), an automated factory for building Multimodal Emotion Recognition and Reasoning datasets!***
+> [!TIP]
+> ***Check out our new project [MER-Factory](https://github.com/Lum1104/MER-Factory), an automated factory for building Multimodal Emotion Recognition and Reasoning datasets!***
 
 ## 📦 Prerequisites
 
